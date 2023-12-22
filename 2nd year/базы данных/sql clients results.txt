@@ -1,0 +1,29 @@
+1) поиск по каждому из имен:
+ а) SELECT * FROM `clients` WHERE `name` = 'Robert'
+ б) SELECT * FROM `clients` WHERE `name` = 'Jeffrey'
+ в) SELECT * FROM `clients` WHERE `name` = 'John'
+ г) SELECT * FROM `clients` WHERE `name` = 'Richard'
+ д) SELECT * FROM `clients` WHERE `name` = 'David'
+ e) SELECT * FROM `clients` WHERE `name` IN ('Robert', 'Jeffrey', 'John', 'Richard', 'David')
+
+2) для выборки всех:
+ а) SELECT * FROM `clients` WHERE `gender` = 'M'
+ б) SELECT * FROM `clients` WHERE `gender` = 'F'
+
+3) для определения имени и телефона среди всех клиентов с фамилией
+ а) SELECT `name`, `phone` FROM `clients` WHERE `lastname` = 'Williams'
+ б) SELECT `name`, `phone` FROM `clients` WHERE `lastname` = 'Jones'
+ в) SELECT `name`, `phone` FROM `clients` WHERE `lastname` = 'Brown'
+ г) SELECT `name`, `phone` FROM `clients` WHERE `lastname` = 'Miller'
+ д) SELECT `name`, `phone` FROM `clients` WHERE `lastname` IN ('Williams', 'Jones', 'Brown', 'Miller')s
+
+4) для определения даты рождения и пола пользователей с именем или фаимилей
+ а) SELECT `dbirth`, `gender` FROM `clients` WHERE `name` = 'Kelly' OR `lastname` = 'Kelly'
+ б) SELECT `dbirth`, `gender` FROM `clients` WHERE `name` = 'Thomas' OR `lastname` = 'Thomas'
+ в) SELECT `dbirth`, `gender` FROM `clients` WHERE `name` = 'Clark' OR `lastname` = 'Clark'
+ г) SELECT `dbirth`, `gender` FROM `clients` WHERE `name` = 'Joseph' OR `lastname` = 'Joseph'
+
+5) для определения пола, даты рождения и номера телефона пользователей с именем и фамилией
+ а) SELECT `gender`, `dbirth`, `phone` FROM `clients` WHERE `name` = 'Tom' AND `lastname` = 'Brown'
+ б) SELECT `gender`, `dbirth`, `phone` FROM `clients` WHERE `name` = 'Janet' AND `lastname` = 'Silberstein'
+ в) SELECT `gender`, `dbirth`, `phone` FROM `clients` WHERE `name` = 'John' AND `lastname` = 'Foster'

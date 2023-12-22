@@ -1,0 +1,103 @@
+1) /^[0-9]+$/
+2) /^[a-zA-Z0-9]+$/
+3) /^[a-zA-ZР°-СЏРђ-РЇ0-9]+$/
+4) /^[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/
+5) /^[a-zA-Z][a-zA-Z0-9]{2,24}$/
+6) /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/
+7) /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+8) /^\d{4}-\d{2}-\d{2}$/
+9) /^\d{2}\/\d{2}\/\d{4}$/
+10) /^\d{2}\.\d{2}\.\d{4}$/
+11) /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/
+12) /^([01]\d|2[0-3]):([0-5]\d)$/
+13) /^(http(s)?:\/\/)?(www)?[a-zA-Z0-9]+\.[a-zA-Z]{2,}/
+14) /)^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/
+15) /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+16) /^([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}$/i 
+17) /^(([a-f\d]{2}\:){5}[a-f\d]{2})$/i 
+18) /^\+7\d{10}$/
+19) /^4\d{3}([\ \-]?\d{4}){3}$/
+20) /^(?\d{10}|\d{12})$/
+21) /^[0-9]{6}$/
+22) /^\d+(\,\d{1,2})?\sСЂСѓР±\.$/
+23) /^\$\d+(\.\d{1,2})?$/
+
+
+//----------------------------------------------------------------------------------   
+//Вывод расширения файла
+function getFileExtension($filename) { 
+  $extension = pathinfo($filename, PATHINFO_EXTENSION);
+  return $extension;
+}
+    
+//----------------------------------------------------------------------------------
+//Определение расширения архива/аудио/видео/картинки
+function checkFileType($filename) {
+  $extension = getFileExtension($filename);
+  switch ($extension) {
+    case 'zip':
+    case 'rar':
+    case '7z':
+      return 'archive';
+    case 'mp3':
+    case 'wav':
+    case 'ogg':
+      return 'audio';
+    case 'mp4':
+    case 'avi':
+    case 'wmv':
+      return 'video';
+    case 'jpg':
+    case 'png':
+    case 'gif':
+      return 'image';
+    default:
+      return 'unknown';
+  }
+}
+    
+//----------------------------------------------------------------------------------
+//Вывод тэгов title
+function getTitle($html) {
+  preg_match('/<title>(.*?)<\/title>/', $html, $matches);
+  return isset($matches[1]) ? $matches[1] : '';
+}
+    
+//----------------------------------------------------------------------------------
+//Вывод тэгов <a>
+function getLinks($html) {
+  preg_match_all('/<a[^>]+href=([\'"])(.*?)\1/i', $html, $matches);
+  return isset($matches[2]) ? $matches[2] : [];
+}
+    
+//----------------------------------------------------------------------------------
+//Вывод тэгов <img>
+function getImageLinks($html) {
+  preg_match_all('/<img[^>]+src=([\'"])(.*?)\1/i', $html, $matches);
+  return isset($matches[2]) ? $matches[2] : [];
+}
+
+//----------------------------------------------------------------------------------
+//Выделение строки
+function highlightString($string, $search) {
+  return preg_replace('/(' . preg_quote($search, '/') . ')/i', '<strong>$1</strong>', $string);
+
+//----------------------------------------------------------------------------------
+//Вывод набора смайликов
+function replaceSmilies($string) {
+  $smilies = [
+    ':)' => 'smile.png',
+    ';)' => 'wink.png',
+    ':(' => 'sad.png'
+  ];
+  foreach ($smilies as $smiley => $image) {
+    $string = str_replace($smiley, '<img src="' . $image . '" alt="' . $smiley . '">', $string);
+  }
+  return $string;
+}
+    
+//----------------------------------------------------------------------------------
+//Удаление пробелов
+function removeExtraSpaces($string) {
+  return preg_replace('/\s+/', ' ', $string);
+}

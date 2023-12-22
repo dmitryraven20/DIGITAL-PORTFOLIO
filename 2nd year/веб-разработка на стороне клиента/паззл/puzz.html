@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>пазл</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            html body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .puzzle {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .right-pane {
+                background-color: aquamarine;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .left-pane {
+                z-index: 10;
+            }
+            .puzzle-source .puzzle-item{
+                display: inline-block;
+                z-index: 10;
+            }
+            .puzzle-result {
+                display: grid;
+                grid-gap: 1px;
+                grid-template-columns: repeat(9,100px);
+            }
+            .puzzle-game {
+                display: grid;
+                /* grid-template-columns: ; */
+            }
+            .puzzle-item {
+                background-repeat: no-repeat;
+            }
+            .puzzle-result .puzzle-cell {
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let puzzleGame = document.getElementById('puzzle-area');
+                let result = puzzleGame.querySelector('.puzzle-result');
+                let source = puzzleGame.querySelector('.puzzle-source');
+                const width = 12;
+                const height = 6;
+                const size = 100;
+                const imageUrl = 'puzz.JPG';
+                result.style.gridTemplateColumns = `repeat(${width}, ${size}px)`;
+                let tiles = [];
+                for (let y = 0; y < height; y++) {
+                    tiles[y] = [];
+                    for (let x = 0; x < width; x++) {
+                        let cell = document.createElement('div');
+                        cell.className = 'puzzle-cell';
+                        cell.style.width = `${size}px`;
+                        cell.style.height = `${size}px`;
+                        cell.x = x;
+                        cell.y = y;
+                        result.append(cell);
+
+                        let tile = document.createElement('div');
+                        tile.x = x;
+                        tile.y = y;
+                        tile.className = 'puzzle-item';
+                        tile.style.backgroundImage = 'url(' + imageUrl + ')';
+                        tile.style.width = `${size}px`;
+                        tile.style.height = `${size}px`;
+                        tile.style.backgroundPosition = `${-x * size}px ${-y * size}px`;
+                        cell.append(tile);
+                        tiles[y].push(tile);
+                    }
+                }
+                let leftPane = puzzleGame.querySelector('.left-pane');
+                let srcWidth = leftPane.offsetWidth;
+                let srcHeight = leftPane.offsetHeight;
+                for (let i = 0; i < 1000; i++) {
+                    let randX = Math.round(Math.random() * (width-1));
+                    let randY = Math.round(Math.random() * (height-1));
+                    let randTile = tiles[randY][randX];
+
+                    let posLeft = Math.round(Math.random() * (srcWidth-size));
+                    let posTop = Math.round(Math.random() * (srcWidth-size));
+
+                    randTile.style.position = 'absolute';
+                    randTile.style.left = `${posLeft}px`;
+                    randTile.style.top = `${posTop}px`;
+                    source.append(randTile);
+                }
+
+                source.addEventListener('mousedown', e => {
+                    let target = e.target;
+                    e.preventDefault();
+                    if (target.classList.contains('puzzle-item')) {
+                        for (let tile of source.children) {
+                            tile.style.zIndex = 0;
+                        }
+                        target.style.zIndex = 10;
+
+                        let initX = e.clientX;
+                        let initY = e.clientY;
+
+                        let checkMove = e => {
+                            let diffX = e.clientX - initX;
+                            let diffY = e.clientY - initY;
+                            target.style.top = (target.offsetTop + diffY) + 'px';
+                            target.style.left = (target.offsetLeft + diffX) + 'px';
+                            initX = e.clientX;
+                            initY = e.clientY;
+                        };
+
+                        let checkUp = e => {
+                            document.removeEventListener('mousemove', checkMove);
+                            document.removeEventListener('mousemove', checkUp);
+                            result.removeEventListener('mouseover',checkOver);
+                        };
+
+                        document.addEventListener('mousemove', checkMove);
+                        document.addEventListener('mouseup',checkUp);
+
+                        let checkOver = e => {
+                            let t = e.target;
+                            if (t.classList.contains('puzzle-cell')) {
+                                target.style.position = 'relative';
+                                t.append(target);
+                                checkUp();
+                            }
+                        };
+                        
+                        // result.addEventListener('mouseover',checkOver)
+                    }
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="puzzle-area" class="puzzle">
+            <div class="left-pane">
+                <div class="puzzle-source"></div>
+            </div>
+            <div class="right-pane">
+                <div class="puzzle-result"></div>
+            </div>
+        </div>
+    </body>
+</html>

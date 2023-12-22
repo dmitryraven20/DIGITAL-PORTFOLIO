@@ -1,0 +1,18 @@
+
+CREATE TABLE `todolist` (
+  `id` int UNSIGNED NOT NULL,
+  `theme` varchar(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `place` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `length` varchar(100) NOT NULL,
+  `comment` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE `todolist`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `todolist`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;

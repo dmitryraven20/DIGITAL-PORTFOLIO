@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `media` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `release year` year DEFAULT NULL,
+  `main genre` varchar(45) DEFAULT NULL,
+  `format` varchar(45) DEFAULT NULL,
+  `country` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+INSERT INTO `media` (`id`, `title`, `release year`, `main genre`, `format`, `country`) VALUES
+(2, 'Cowboy Bebop', '1998', 'space opera', 'anime series', 'Japan'),
+(3, 'Guardians Of The Galaxy', '2014', 'space opera', 'live-action movie', 'USA'),
+(4, 'Pacific Rim: The Black', '2021', 'fiction', 'anime-style series', 'USA / Japan'),
+(5, 'Initial D', '1995', 'action', 'anime series', 'Japan'),
+(6, 'Fate: The Winx Saga', '2021', 'fantasy', 'live-action series', 'Great Britain'),
+(7, 'Rogue One', '2016', 'space opera', 'live-action movie', 'USA'),
+(8, 'Star Trek: Lower Decks', '2020', 'science fiction', 'cartoon series', 'USA'),
+(9, 'F9', '2021', 'action', 'live-action movie', 'USA'),
+(10, 'Andor', '2022', 'space opera', 'live-action series', 'USA'),
+(11, 'Mad Max: Fury Road', '2014', 'action', 'live-action movie', 'USA');

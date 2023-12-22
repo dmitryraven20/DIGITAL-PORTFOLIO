@@ -1,0 +1,69 @@
+CREATE TABLE `genrelist` (
+  `id` INT UNSIGNED AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `djs` (
+  `id` INT UNSIGNED AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `age` VARCHAR(255) NOT NULL,
+  `phone` VARCHAR(255) NOT NULL,
+  PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `statuses` (
+  `id` INT UNSIGNED AUTO_INCREMENT,
+  `type` VARCHAR(255) NOT NULL,
+  PRIMARY KEY(`id`)
+);
+
+CREATE TABLE `radiostations` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playlist` VARCHAR(255) NOT NULL,
+  `song amount` VARCHAR(255) NOT NULL,
+  `airdate` TIMESTAMP NOT NULL,
+  `genre_id` INT UNSIGNED,
+  `dj_id` INT UNSIGNED,
+  `status_id` INT UNSIGNED,
+  PRIMARY KEY(`id`),
+  CONSTRAINT FOREIGN KEY(`genre_id`) REFERENCES `genrelist`(`id`) ON DELETE SET NULL,
+  CONSTRAINT FOREIGN KEY(`dj_id`) REFERENCES `djs`(`id`) ON DELETE SET NULL,
+  CONSTRAINT FOREIGN KEY(`status_id`) REFERENCES `statuses`(`id`) ON DELETE SET NULL
+);
+
+__________________________
+
+
+CREATE VIEW `Full tab` AS
+SELECT `radiostations`.`playlist`, `radiostations`.`song amount`, `radiostations`.`airdate`, 
+`djs`.`name` as dj,`genrelist`.`name` as genre,`statuses`.`type` as status FROM `radiostations`
+JOIN `genrelist` ON `radiostations`.`genre_id` = `genrelist`.`id`
+JOIN `djs` ON `radiostations`.`dj_id` = `djs`.`id`
+JOIN `statuses` ON `radiostations`.`status_id` = `statuses`.`id`
+GROUP BY `radiostations`.`id`;
+
+CREATE VIEW `Pop` AS
+SELECT * FROM `Full tab`
+WHERE `genre` IN ('Europop', 'Synthpop');
+
+CREATE VIEW `AirD 20-05 20-06` AS
+SELECT `playlist`,`song amount`,`airdate` FROM `radiostations` 
+WHERE (`airdate` BETWEEN '2023-05-20' and '2023-06-20')
+
+CREATE VIEW `Cancelled` AS
+SELECT `radiostations`.`playlist`, `radiostations`.`airdate`,`statuses`.`type` FROM `radiostations`
+JOIN `statuses` ON `radiostations`.`status_id` = `statuses`.`id`
+WHERE `statuses`.`type`='Cancelled'
+GROUP BY `radiostations`.`id`;
+
+CREATE VIEW `Reschedule` AS
+SELECT `radiostations`.`playlist`, `radiostations`.`song amount`, `radiostations`.`airdate`, 
+`statuses`.`type` as status FROM `radiostations`
+JOIN `statuses` ON `radiostations`.`status_id` = `statuses`.`id`
+WHERE (`radiostations`.`airdate` BETWEEN '2023-05-01' and '2023-05-31')
+GROUP BY `radiostations`.`id`;
+UPDATE `radiostations` SET `radiostations`.`airdate`='2023-06-12', `radiostations`.`status_id`=1
+WHERE `radiostations`.`airdate`='2023-05-27' AND `radiostations`.`status_id`=4;
+UPDATE `radiostations` SET `radiostations`.`airdate`='2023-06-19', `radiostations`.`status_id`=1 
+WHERE `radiostations`.`airdate`='2023-05-31' AND `radiostations`.`status_id`=4;

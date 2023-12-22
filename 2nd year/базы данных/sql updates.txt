@@ -1,0 +1,37 @@
+1.1
+SELECT * FROM `clients` WHERE CONCAT(`name`," " ,`lastname`) IN ("Gary Harrison", "Michael Atwood", "Amy Majors", "Katherine Smith");
+UPDATE `clients` SET `dbirth`='1930-10-21' WHERE CONCAT(`name`," " ,`lastname`)="Gary Harrison" LIMIT 1;
+UPDATE `clients` SET `dbirth`='1930-04-12' WHERE CONCAT(`name`," " ,`lastname`)="Michael Atwood" LIMIT 1;
+UPDATE `clients` SET `dbirth`='1934-10-21' WHERE CONCAT(`name`," " ,`lastname`)="Amy Majors" LIMIT 1;
+UPDATE `clients` SET `dbirth`='1959-09-22' WHERE CONCAT(`name`," " ,`lastname`)="Katherine Smith" LIMIT 1;
+SELECT * FROM `clients` WHERE CONCAT(`name`," " ,`lastname`) IN ("Katherine Smith", "Amy Majors", "Michael Atwood", "Gary Harrison");
+
+
+1.2
+SELECT * FROM `clients` WHERE `dbirth` < '1933-01-01';
+UPDATE `clients` SET `phone`=NULL WHERE `dbirth` < '1933-01-01';
+SELECT * FROM `clients` WHERE `dbirth` < '1933-01-01';
+
+
+1.3
+SELECT * FROM `clients` WHERE `name`="John" and `lastname`="Ohara";
+UPDATE `clients` SET `gender`='F', `name`='Johanna' WHERE `name`="John" and `lastname`="Ohara";
+SELECT * FROM `clients` WHERE `name`="Johanna" and `lastname`="Ohara";
+
+
+1.4
+SELECT * FROM `clients` WHERE CONCAT(`name`," " ,`lastname`) IN ("Humberto Hoosier", "Irene Schreiber", "Donna Wallace");
+UPDATE `clients` SET `phone`='6466660' WHERE CONCAT(`name`," " ,`lastname`)="Humberto Hoosier";
+UPDATE `clients` SET `phone`='1234567' WHERE CONCAT(`name`," " ,`lastname`)="Irene Schreiber";
+UPDATE `clients` SET `phone`='2080903' WHERE CONCAT(`name`," " ,`lastname`)="Donna Wallace";
+SELECT * FROM `clients` WHERE CONCAT(`name`," " ,`lastname`) IN ("Humberto Hoosier", "Irene Schreiber", "Donna Wallace");
+
+
+1.5
+SELECT * FROM `clients` WHERE `id` IN (215,340,449,470,607);
+DELETE FROM `clients` WHERE `id` IN (215,340,449,470,607);
+
+
+1.6
+SELECT * FROM `clients` WHERE `gender`='M' AND ((DATE(`dbirth`) BETWEEN '1941-01-01' AND '1941-04-30') OR (DATE(`dbirth`) BETWEEN '1972-09-10' AND '1972-09-15'));
+DELETE FROM `clients` WHERE `gender`='M' AND ((DATE(`dbirth`) BETWEEN '1941-01-01' AND '1941-04-30') OR (DATE(`dbirth`) BETWEEN '1972-09-10' AND '1972-09-15'));

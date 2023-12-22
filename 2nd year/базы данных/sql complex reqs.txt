@@ -1,0 +1,32 @@
+1.1
+SELECT `students`.`firstname`, `students`.`lastname`, `subjects`.`name`, `student_marks`.`date`, `student_marks`.`mark` FROM `student_marks`
+JOIN `students` ON `students`.`id`=`student_marks`.`student_id`
+JOIN `subjects` ON `subjects`.`id`=`student_marks`.`subject_id`
+ORDER BY `students`.`firstname`, `students`.`lastname`, `subjects`.`name`;
+
+1.2
+SELECT `students`.`id`, `students`.`firstname`, `students`.`lastname`, AVG(mark) FROM `students`
+JOIN `student_marks` ON `students`.`id`=`student_marks`.`student_id`
+GROUP BY `students`.`id`;
+
+1.3
+SELECT `students`.`id`, `students`.`firstname`, `students`.`lastname`, mark, COUNT(mark) mark_count FROM `students`
+JOIN `student_marks` ON `students`.`id`=`student_marks`.`student_id`
+GROUP BY `students`.`id`, -mark;
+
+1.4
+SELECT `students`.`id`, `students`.`firstname`, `students`.`lastname`, AVG(mark) as avarage FROM `students`
+JOIN `student_marks` ON `students`.`id`=`student_marks`.`student_id`
+GROUP BY `students`.`id` ORDER BY avarage DESC LIMIT 1; (самый успевающий)
+или
+GROUP BY `students`.`id` ORDER BY avarage LIMIT 1 (самый неуспевающий)
+
+1.5
+SELECT `subjects`.`id`, `subjects`.`name`, AVG(`student_marks`.`mark`) as avarage FROM `subjects`
+JOIN `student_marks` ON `subjects`.`id`=`student_marks`.`subject_id`
+GROUP BY `subjects`.`id` ORDER BY avarage DESC LIMIT 1;
+
+1.6
+SELECT date, GROUP_CONCAT(`subjects`.`name`) FROM `subject_schedules`
+JOIN `subjects` ON `subjects`.`id`=`subject_schedules`.`subject_id`
+GROUP BY date ORDER BY date;

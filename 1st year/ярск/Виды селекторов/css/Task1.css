@@ -1,0 +1,8 @@
+.places li {
+
+}
+
+span:nth-last-child(2) {
+  font-weight: bold;
+  border-bottom: 2px solid #cccccc;
+}

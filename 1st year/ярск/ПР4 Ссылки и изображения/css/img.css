@@ -1,0 +1,29 @@
+body {
+    width: 1440px;
+    margin: 80;
+    padding: 10px;
+    font-family: "Century Gothic";
+    font-size: 20px;
+    background-color: #FFFFFD;
+}
+
+h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+img {
+    width: 100%;
+    border-radius: 50px;
+}
+
+figure {
+    border: 5px solid darksalmon;
+    width: 80%;
+    margin-left: 17%;
+    border-radius: 55px;
+}
+
+figcaption {
+    text-align: center;
+}

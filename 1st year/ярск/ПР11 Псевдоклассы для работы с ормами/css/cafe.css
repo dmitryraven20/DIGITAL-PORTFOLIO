@@ -1,0 +1,83 @@
+body {
+    margin: 10;
+    padding: 10px;
+    font-family: "Century Gothic";
+    font-size: 30px;
+}
+
+.nam {
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    background-color: #f1f1f1;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.covered {
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    min-width: 300px;
+    min-height: 200px;
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.covered:hover .food1 {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 200px;
+    background-image: url(../img/food1.png);    
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.covered:hover .food2 {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 200px;
+    background-image: url(../img/food2.png);    
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.covered:hover .food3 {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 200px;
+    background-image: url(../img/food3.png);    
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.covered:hover {
+    background-color: transparent;
+}
+.food1 {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 200px;
+    background-image: url(../img/covered.png);
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.food2 {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 200px;
+    background-image: url(../img/covered.png);
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.food3 {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 200px;
+    background-image: url(../img/covered.png);
+    z-index: 1;
+    background-repeat: no-repeat;
+}

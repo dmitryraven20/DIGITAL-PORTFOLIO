@@ -1,0 +1,6 @@
+n = list(map(int, input('Введите числа (от 1 до 10 через пробел): ').split()))
+print(n)
+kolv = list(filter(lambda x: int(x) % 3 == 0, n))
+print(kolv)
+v = len(kolv)
+print (v)

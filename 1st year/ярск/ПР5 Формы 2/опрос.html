@@ -1,0 +1,78 @@
+<html>
+	<head>
+        <title>Практическая работа 5</title>
+        <meta charset="utf-8">
+        <meta type="keywords" content="text, css, form">
+		<link rel="stylesheet" type="text/css" href="./css/практическая5.css">
+	</head>
+	<body>
+        <h2>Что вы думаете об обучении в университете?</h2>
+		<form method="get" action="my.ru">
+			<table>
+				<tr>
+					<td><label for="sur">Фамилия</label></td>
+					<td><input type="text" name="surname" required id="sur"></td>
+				</tr>
+				<tr>
+					<td><label for="nam">Имя</label></td>
+					<td><input type="text" name="name" required id="nam"></td>
+				</tr>
+					<td><label for="fund">По какой форме вы обучаетесь?</label></td>
+					<td><select name="fund">
+                            <option selected value="a1">Очная</option>
+                            <option value="a2">Очно-заочная</option>
+                        </select>
+                    </td>
+                <br>
+    			<tr>
+					<td><label for="fac">На каком факультете вы обучаетесь?</label></td>
+					<td><select name="select">
+                        <option selected value="a1">Биолого-почвенный факультет</option>
+                        <option value="a2">Географический факультет</option>
+                        <option value="a3">Геологический факультет</option>
+                        <option value="a4">Исторический факультет</option>
+                        <option value="a5">Подготовительный факультет для иностранных граждан</option>
+                        <option value="a6">Факультет бизнеса и менеджмента</option>
+                        <option value="a7">Факультет бизнес-коммуникаций и информатики</option>
+                        <option value="a8">Факультет психологии</option>
+                        <option value="a9">Физический факультет</option>
+                        <option value="a10">Химический факультет</option>
+                        </select>
+                    </td>
+				</tr>
+                <tr>
+					<td><label for="spec">Какова ваша специальность?</label></td>
+					<td><input type="tel" name="spec" required id="spec"></td>
+				</tr>
+                <tr>
+ 					<td><label for="spec2">Почему вы выбрали специальность, по которой вы учитесь?</label></td>
+					<td><input type="text" name="spec2" required id="spec2"></td>
+                </tr>
+                <tr>
+ 					<td><label for="univ">Почему вы выбрали именно этот университет?</label></td>
+					<td><input type="text" name="univ" required id="univ"></td>
+                </tr>
+                <tr>
+ 					<td><label for="cours">На каком курсе вы учитесь?</label></td>
+					<td><input type="text" name="cours" required id="cours"></td>
+                </tr>
+                <tr>
+ 					<td><label for="quality">Удовлетворяет ли вас в целом качество образования?</label></td>
+					<td><input type="text" name="quality" required id="quality"></td>
+                </tr>
+                <tr>
+ 					<td><label for="pract">Проходили ли вы производственную практику во время обучения?</label></td>
+					<td><input type="text" name="pract" required id="pract"></td>
+                </tr>
+                <tr>
+ 					<td><label for="attend">Всегда ли вы посещате занятия в этом учебном году?</label></td>
+					<td><input type="text" name="attend" required id="attend"></td>
+                </tr>
+			</table>
+            <p><input type="submit" value="Отправить"></p>
+		</form>
+        <form action="my.ru" method="post">
+            <input type="reset" value="Сбросить">
+        </form>
+	</body>
+</html>

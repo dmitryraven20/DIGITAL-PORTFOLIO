@@ -1,0 +1,36 @@
+body {
+    width: 1280px;
+    margin: 60;
+    padding: 10px;
+    font-family: "Century Gothic";
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    width: 550px;
+}
+
+td {
+    padding: 15px;
+    padding-left: 5px;
+    border: 1px solid gray;
+    border-color: darkgrey;
+    background-color: beige;
+    text-align: center;
+}
+
+td:hover {
+    font-style: italic;
+    background-color: #eaeacd;
+    border: 2px solid darkgrey;
+}
+
+input:required {
+    border: 3px solid red;
+}

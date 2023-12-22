@@ -1,0 +1,30 @@
+body {
+    padding: 10px;
+    font-family: "Century Gothic";
+    font-size: 20px;
+    text-align: justify;
+}
+
+.border-img {
+    width:70%;
+    height:150px;
+    border-width: 50px;
+    background-repeat:round;
+    border-style: solid;
+    border-width: 50px;
+    background-color:floralwhite;
+    border-image: url(../img/frame.png) 82 80 80 80 stretch;
+}
+
+h1{
+    font-size: 30px;
+}
+
+.bckgr {
+    width:70%;
+    height:300px;
+    border: 5px #667788 solid;
+    background: beige url(../img/background.jpg);
+    background-repeat:round;
+    background-blend-mode:soft-light;
+}

@@ -1,0 +1,44 @@
+body {
+    width: 1280px;
+    margin: 60;
+    padding: 10px;
+    font-family: "Century Gothic";
+    font-size: 30px;
+    font-weight: bold;
+    background-color: darkgreen;
+}
+
+div {
+    min-height: 50px;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: white;
+    border: 5px solid #111111;
+    border-radius: 20px;
+    padding-bottom: 0;
+    position: relative;
+    display: inline-block;
+}
+
+p {
+    text-align: left;
+    line-height: 0;
+}
+
+h1 {
+    text-align: center;
+    line-height: 130px;
+}
+
+.card1 {
+    color: red;
+}
+
+.card2 {
+    color: black;
+}
+
+.rot {
+    transform: rotate(180deg);
+    transform-origin:top;
+}

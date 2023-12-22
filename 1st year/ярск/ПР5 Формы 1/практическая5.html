@@ -1,0 +1,42 @@
+<html>
+	<head>
+        <title>Практическая работа 5</title>
+        <meta charset="utf-8">
+        <meta type="keywords" content="text, css, form">
+		<link rel="stylesheet" type="text/css" href="./css/практическая5.css">
+	</head>
+	<body>
+        <h2>Регистрация</h2>
+		<form method="get" action="my.ru">
+			<table>
+				<tr>
+					<td><label for="sur">Фамилия</label></td>
+					<td><input type="text" name="surname" required id="sur"></td>
+				</tr>
+				<tr>
+					<td><label for="nam">Имя</label></td>
+					<td><input type="text" name="name" required id="nam"></td>
+				</tr>
+					<td><label for="nick">Отображаемый никнейм</label></td>
+					<td><input type="text" name="nickname" required id="nick"></td>
+                <br>
+    			<tr>
+					<td><label for="email">Адрес электронной почты</label></td>
+					<td><input type="text" name="email" required id="email"></td>
+				</tr>
+                <tr>
+					<td><label for="num">Номер телефона</label></td>
+					<td><input type="tel" name="number" required id="num"></td>
+				</tr>
+                <tr>
+ 					<td><label for="adress">Домашний адрес</label></td>
+					<td><input type="text" name="adress" required id="adress"></td>
+                </tr>
+			</table>
+            <p><input type="submit" value="Отправить"></p>
+		</form>
+        <form action="my.ru" method="post">
+            <input type="reset" value="Сбросить">
+        </form>
+	</body>
+</html>

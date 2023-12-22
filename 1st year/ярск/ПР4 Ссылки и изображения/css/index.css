@@ -1,0 +1,31 @@
+body {
+    width: 1280px;
+    margin: 80;
+    padding: 10px;
+    font-family: "Century Gothic";
+    font-size: 20px;
+    background-color: #FFFFFD;
+}
+
+h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    width: 550px;
+}
+
+caption {
+    text-align: left;
+    font-size: 20px;
+}
+
+td {
+    padding: 15px;
+    padding-left: 5px;
+    border: 1px solid gray;
+    border-color: darkgrey;
+    background-color: beige;
+}

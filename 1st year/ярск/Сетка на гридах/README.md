@@ -1,3 +1,3 @@
 # DIGITAL-PORTFOLIO
 
-![Screenshot](сетка.jpg)
+![Screenshot](Сетка.jpg)

@@ -1,3 +1,3 @@
 # DIGITAL-PORTFOLIO
 
-![Screenshot](DOM1.png)
+![Screenshot](DOM1.JPG)
